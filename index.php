@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-include_once "Controllers/Controller.php";
+require_once "Controllers/Controller.php";
 $action = null;
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
@@ -16,10 +16,20 @@ try {
     if ($action == null) {
         // TODO : Renvoie code erreur
         // $viewLoaded = $controller->listAction();
+        require_once('Views/404.php');
     } else if ($action == 'subject') {
-
+        if (isset($_GET['fetchGrades'])) {
+            if ($_GET['fetchGrades'] == 'true') {
+                $viewLoaded = true;
+            } else {
+                require_once('Views/400.php');
+                $viewLoaded = true;
+            }
+        } else {
+            $viewLoaded = $controller->getSubjects();
+        }
         // TODO : Lister les branches avec leurs champs
-        $viewLoaded = $controller->getSubjects();
+
 
     } else if ($action == 'grade') {
         // TODO : lister les notes avec leurs champs
