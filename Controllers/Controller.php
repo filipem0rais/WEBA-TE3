@@ -34,9 +34,16 @@ class Controller
     {
         $this->loadDB();
 
-        $grades = $this->db->addGrade($id,$value);
-        echo json_encode($id);
-        include_once "Views/201.php";
-        return true;
+            $grades = $this->db->addGrade($id, $value);
+            $data = "TODO LAST INSERT ID";
+            $code = 201;
+            include_once "Views/template.php";
+            return true;
+
+            $data = "tu commences a me détruire les couilles à mal écrire";
+            $code = 400;
+            include_once "Views/template.php";
+            return true;
+
     }
 }

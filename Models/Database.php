@@ -25,11 +25,4 @@ class Database
         $stmt = $this->db->prepare("INSERT INTO grade (idGrade, idSubject, description, value, date) VALUES (NULL,  :id, NULL, :value, NULL); ");
         $stmt->execute(["id" => $id, "value" => $value]);
     }
-
-    public function  getIdSubjects()
-    {
-        $stmt = $this->db->prepare("SELECT idSubject FROM subject");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
 }

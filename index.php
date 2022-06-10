@@ -45,7 +45,9 @@ try {
         else
         {
             $viewLoaded = true;
-            require_once('Views/400.php');
+            $data = null;
+            $code = 400;
+            require_once('Views/template.php');
         }
         // TODO : ajout d'une note
     } else if ($action == 'deleteGrade') {
