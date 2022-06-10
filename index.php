@@ -12,56 +12,66 @@ try {
     $controller = new Controller();
 
     $viewLoaded = false;
-
-    if ($action == null) {
-        // TODO : Renvoie code erreur
-        // $viewLoaded = $controller->listAction();
-        $code = 404;
-        require_once('Views/template.php');
-    } else if ($action == 'subject') {
+    if ($action == 'subject') {
         if (isset($_GET['fetchGrades']) && !isset($_GET['id'])) {
             if ($_GET['fetchGrades'] == 'true') {
                 $viewLoaded = $controller->getGradesBySubjects();
-            }else if ($_GET['fetchGrades'] == 'false') {
+            } else if ($_GET['fetchGrades'] == 'false') {
                 $viewLoaded = $controller->getSubjects();
-            }
-            else {
+            } else {
                 $code = 400;
                 require_once('Views/template.php');
                 $viewLoaded = true;
             }
         } else if (isset($_GET['id'])) {
             if (is_numeric($_GET['id'])) {
-                // retour vide = 404
-                // retour ok = 200
-                if (isset($_GET['fetchGrades'])){
+                if (isset($_GET['fetchGrades'])) {
                     if ($_GET['fetchGrades'] == 'true') {
                         $viewLoaded = $controller->getGradesBySubjects($_GET['id']);
-                    }else if ($_GET['fetchGrades'] == 'false') {
+                    } else if ($_GET['fetchGrades'] == 'false') {
                         $viewLoaded = $controller->getSubject($_GET['id']);
-                    }
-                    else {
+                    } else {
                         $code = 400;
                         require_once('Views/template.php');
                         $viewLoaded = true;
                     }
-                } else {
-                    $code = 200;
-                    $viewLoaded = $controller->getSubject($_GET['id']);
                 }
+            }
+        } else {
+            $viewLoaded = $controller->getSubjects();
+        }
 
 
+    } else if ($action == 'grade') {
+        // TODO : lister les notes avec leurs champs
+        if (!isset($_GET['bySubjectId']) && !isset($_GET['byGradeId'])) {
+            $controller->getGrades();
+        }
 
+        if (isset($_GET['bySubjectId'], $_GET['byGradeId'])) {
+            $code = 400;
+            require_once('Views/template.php');
+            $viewLoaded = true;
+        }
+
+        if (isset($_GET['bySubjectId'])) {
+            if (is_numeric($_GET['bySubjectId'])) {
+                $controller->getGradesFromSubject($_GET['bySubjectId']);
             } else {
                 $code = 400;
                 require_once('Views/template.php');
                 $viewLoaded = true;
             }
-        } else {
-            $viewLoaded = $controller->getSubjects();
-
         }
-        // TODO : Lister les branches avec leurs champs
+        if (isset($_GET['byGradeId'])) {
+            if (is_numeric($_GET['byGradeId'])) {
+                $controller->getGrade($_GET['byGradeId']);
+            } else {
+                $code = 400;
+                require_once('Views/template.php');
+                $viewLoaded = true;
+            }
+        }
 
 
     } else if ($action == 'grade') {

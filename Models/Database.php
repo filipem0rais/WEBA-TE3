@@ -33,9 +33,26 @@ class Database
     }
 
     public function addGrade($id, $value){
-        $stmt = $this->db->prepare("INSERT INTO grade (idGrade, idSubject, description, value, date) VALUES (NULL,  :id, NULL, :value, NULL); SELECT LAST_INSERT_ID() ");
+        $stmt = $this->db->prepare("INSERT INTO grade (idGrade, idSubject, description, value, date) VALUES (NULL,  :id, NULL, :value, NULL); ");
         $stmt->execute(["id" => $id, "value" => $value]);
         return $this->db->lastInsertId();
     }
 
+    public function  getIdSubjects()
+    {
+        $stmt = $this->db->prepare("SELECT idSubject FROM subject");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getGrades(){
+        $stmt = $this->db->prepare("SELECT * FROM grade");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getGrade($id){
+        $stmt = $this->db->prepare("SELECT * FROM grade WHERE idGrade = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

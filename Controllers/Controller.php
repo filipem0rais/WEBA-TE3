@@ -30,7 +30,7 @@ class Controller
         return true;
     }
 
-    public function addGrade($id, $value)
+    public function addGrade($id,$value)
     {
         $this->loadDB();
         $data = $this->db->getSubject($id);
@@ -51,19 +51,17 @@ class Controller
         }
     }
 
-
-
     public function getGradesBySubjects($id = null): bool
     {
         $this->loadDB();
 
-        if ($id == null) {
+        if ($id == null){
             $subjects = $this->db->getSubjects();
         } else {
             $subjects = $this->db->getSubject($id);
         }
 
-        if (empty($subjects)) {
+        if (empty($subjects)){
             return false;
         }
 
@@ -84,7 +82,7 @@ class Controller
         $this->loadDB();
 
         $data = $this->db->getSubject($id);
-        if (empty($data)) {
+        if (empty($data)){
             return false;
         }
         $code = 200;
@@ -98,5 +96,40 @@ class Controller
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
+    }
+
+    public function getGrades()
+    {
+        $this->loadDB();
+        $data = $this->db->getGrades();
+        if (empty($data)){
+            return false;
+        }
+        $code = 200;
+        include_once "Views/template.php";
+        return true;
+    }
+
+    public function getGradesFromSubject($id){
+        $this->loadDB();
+        $data = $this->db->getGradesFromSubject($id);
+        if (empty($data)){
+            return false;
+        }
+        $code = 200;
+        include_once "Views/template.php";
+        return true;
+    }
+
+    public function getGrade($id)
+    {
+        $this->loadDB();
+        $data = $this->db->getGrade($id);
+        if (empty($data)){
+            return false;
+        }
+        $code = 200;
+        include_once "Views/template.php";
+        return true;
     }
 }
