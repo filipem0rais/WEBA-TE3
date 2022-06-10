@@ -43,4 +43,15 @@ class Database
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getGrades(){
+        $stmt = $this->db->prepare("SELECT * FROM grade");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getGrade($id){
+        $stmt = $this->db->prepare("SELECT * FROM grade WHERE idGrade = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
