@@ -33,7 +33,9 @@ class Database
     }
 
     public function addGrade($id, $value){
-        $stmt = $this->db->prepare("INSERT INTO grade (idGrade, idSubject, description, value, date) VALUES (NULL,  :id, NULL, :value, NULL); ");
+        $stmt = $this->db->prepare("INSERT INTO grade (idGrade, idSubject, description, value, date) VALUES (NULL,  :id, NULL, :value, NULL); SELECT LAST_INSERT_ID() ");
         $stmt->execute(["id" => $id, "value" => $value]);
+        return $this->db->lastInsertId();
     }
+
 }
