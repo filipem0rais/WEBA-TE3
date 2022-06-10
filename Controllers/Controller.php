@@ -30,6 +30,16 @@ class Controller
         return true;
     }
 
+    public function addGrade($id,$value)
+    {
+        $this->loadDB();
+
+        $grades = $this->db->addGrade($id,$value);
+        echo json_encode($id);
+        include_once "Views/201.php";
+        return true;
+    }
+
     public function getGradesBySubjects($id = null): bool
     {
         $this->loadDB();

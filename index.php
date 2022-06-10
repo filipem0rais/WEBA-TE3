@@ -67,6 +67,16 @@ try {
     } else if ($action == 'grade') {
         // TODO : lister les notes avec leurs champs
     } else if ($action == 'addGrade') {
+        if (isset($_GET['idSubject']) && isset($_GET['value'])) {
+            $idSubject = $_GET['idSubject'];
+            $value = $_GET['value'];
+            $viewLoaded = $controller->addGrade($idSubject,$value);
+        }
+        else
+        {
+            $viewLoaded = true;
+            require_once('Views/400.php');
+        }
         // TODO : ajout d'une note
     } else if ($action == 'deleteGrade') {
         // TODO : supression d'une note
