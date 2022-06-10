@@ -16,17 +16,20 @@ try {
     if ($action == null) {
         // TODO : Renvoie code erreur
         // $viewLoaded = $controller->listAction();
-        require_once('Views/404.php');
+        $code = 404;
+        require_once('Views/template.php');
     } else if ($action == 'subject') {
         if (isset($_GET['fetchGrades'])) {
             if ($_GET['fetchGrades'] == 'true') {
                 $viewLoaded = true;
             } else {
-                require_once('Views/400.php');
+                $code = 400;
+                require_once('Views/template.php');
                 $viewLoaded = true;
             }
         } else {
             $viewLoaded = $controller->getSubjects();
+
         }
         // TODO : Lister les branches avec leurs champs
 
@@ -42,9 +45,11 @@ try {
     }
 
     if (!$viewLoaded) {
-        require_once('Views/404.php');
+        $code = 404;
+        require_once('Views/template.php');
     }
 
 } catch (Exception $e) {
-    require_once('Views/500.php');
+    $code = 500;
+    require_once('Views/template.php');
 }

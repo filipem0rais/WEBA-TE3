@@ -12,7 +12,8 @@ class Controller
             try {
                 $this->db = new Database();
             } catch (Exception $e) {
-                include_once "Views/500.php";
+                $code = 500;
+                include_once "Views/template.php";
                 return;
             }
         }
@@ -22,9 +23,10 @@ class Controller
     {
         $this->loadDB();
 
-        $subjects = $this->db->getSubjects();
-        echo "1";
-        include_once "Views/200.php";
+        $data = $this->db->getSubjects();
+
+        $code = 200;
+        include_once "Views/template.php";
         return true;
     }
 }
