@@ -32,9 +32,9 @@ CREATE DATABASE weba_te3;
 CREATE TABLE `grade` (
   `idGrade` int(11) NOT NULL,
   `idSubject` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` varchar(255) NULL,
   `value` float(2,1) NOT NULL,
-  `date` datetime NOT NULL
+  `date` datetime NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
