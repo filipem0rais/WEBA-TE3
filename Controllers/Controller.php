@@ -19,7 +19,7 @@ class Controller
         }
     }
 
-    public function getSubjects()
+    public function getSubjects(): bool
     {
         $this->loadDB();
 
@@ -45,5 +45,44 @@ class Controller
             include_once "Views/template.php";
             return true;
 
+    }
+
+    public function getGradesBySubjects($id = null): bool
+    {
+        $this->loadDB();
+
+        if ($id == null){
+            $subjects = $this->db->getSubjects();
+        } else {
+            $subjects = $this->db->getSubject($id);
+        }
+
+        if (empty($subjects)){
+            return false;
+        }
+
+        for ($i = 0; $i < count($subjects); $i++) {
+            //$subjects[$i]['grades'] = '2';
+            $subjects[$i]['grades'] = $this->db->getGradesFromSubject($subjects[$i]['idSubject']);
+        }
+
+        $data = $subjects;
+
+        $code = 200;
+        include_once "Views/template.php";
+        return true;
+    }
+
+    public function getSubject($id): bool
+    {
+        $this->loadDB();
+
+        $data = $this->db->getSubject($id);
+        if (empty($data)){
+            return false;
+        }
+        $code = 200;
+        include_once "Views/template.php";
+        return true;
     }
 }

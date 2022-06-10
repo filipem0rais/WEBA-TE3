@@ -18,7 +18,18 @@ class Database
     public function getSubjects(){
         $stmt = $this->db->prepare("SELECT * FROM subject");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS,"Subject");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getSubject($id){
+        $stmt = $this->db->prepare("SELECT * FROM subject WHERE idSubject = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getGradesFromSubject($id){
+        $stmt = $this->db->prepare("SELECT * FROM grade WHERE idSubject = :id");
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function addGrade($id, $value){
