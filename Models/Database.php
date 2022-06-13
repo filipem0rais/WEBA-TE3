@@ -38,13 +38,6 @@ class Database
         return $this->db->lastInsertId();
     }
 
-    public function  getIdSubjects()
-    {
-        $stmt = $this->db->prepare("SELECT idSubject FROM subject");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     public function getGrades(){
         $stmt = $this->db->prepare("SELECT * FROM grade");
         $stmt->execute();
@@ -54,5 +47,10 @@ class Database
         $stmt = $this->db->prepare("SELECT * FROM grade WHERE idGrade = :id");
         $stmt->execute([':id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteGrade($id){
+        $stmt = $this->db->prepare("DELETE from grade where idGrade = :id");
+        $stmt->execute(["id" => $id]);
     }
 }

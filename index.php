@@ -91,7 +91,18 @@ try {
             require_once('Views/template.php');
         }
     } else if ($action == 'deleteGrade') {
-        // TODO : supression d'une note
+
+        $id = $controller->test_input($_GET['idGrade']);
+
+        if (isset($id)) {
+            $viewLoaded = $controller->deleteGrade($id);
+        }
+        else
+        {
+            $viewLoaded = true;
+            $code = 400;
+            require_once('Views/template.php');
+        }
     } else if ($action == 'subjectAverage') {
         // TODO : moyenne d'une branche
     }

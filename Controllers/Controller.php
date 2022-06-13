@@ -51,6 +51,27 @@ class Controller
         }
     }
 
+    public function deleteGrade($id)
+    {
+        $this->loadDB();
+        $check = $this->db->getGrade($id);
+        if (is_numeric($id)) {
+            if (empty($check)) {
+                return false;
+            } else {
+                $data = $this->db->deleteGrade($id);
+                $code = 204;
+                include_once "Views/template.php";
+                return true;
+            }
+        }
+        else{
+            $code = 400;
+            include_once "Views/template.php";
+            return true;
+        }
+    }
+
     public function getGradesBySubjects($id = null): bool
     {
         $this->loadDB();
