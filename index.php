@@ -68,10 +68,9 @@ try {
                 $viewLoaded = $controller->errorCode(400);
             }
         }
-    } else if ($action == 'addGrade') {
-
-        if ($count == 2) {
-            if (isset($_GET['idSubject']) && isset($_GET['value'])) {
+    } else if ($action == 'addGrade' ) {
+        if ($count == 3) {
+            if (isset($_GET['idSubject']) && isset($_GET['value']) && "PUT" == $_SERVER['REQUEST_METHOD']) {
                 $id = $controller->clear_input($_GET['idSubject']);
                 $value = $controller->clear_input($_GET['value']);
                 $viewLoaded = $controller->addGrade($id, $value);
@@ -86,7 +85,7 @@ try {
 
         if ($count == 1) {
             $id = $controller->clear_input($_GET['idGrade']);
-            if (isset($id)) {
+            if (isset($id)  && "DELETE" == $_SERVER['REQUEST_METHOD']) {
                 $viewLoaded = $controller->deleteGrade($id);
             } else {
                 $viewLoaded = $controller->errorCode(400);
