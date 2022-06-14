@@ -80,10 +80,8 @@ try {
         } else {
             $viewLoaded = $controller->errorCode(400);
         }
-
     } else if ($action == 'deleteGrade') {
-
-        if ($count == 1) {
+        if ($count == 2) {
             $id = $controller->clear_input($_GET['idGrade']);
             if (isset($id)  && "DELETE" == $_SERVER['REQUEST_METHOD']) {
                 $viewLoaded = $controller->deleteGrade($id);
@@ -94,7 +92,7 @@ try {
             $viewLoaded = $controller->errorCode(400);
         }
     } else if ($action == 'subjectAverage') {
-        if ($count == 1) {
+        if ($count == 2) {
             if (isset($_GET['idSubject']) && is_numeric($_GET['idSubject'])) {
                 $id = $controller->clear_input($_GET['idSubject']);
                 $viewLoaded = $controller->getAverage($id);

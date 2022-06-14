@@ -33,7 +33,7 @@ class Controller
         return true;
     }
 
-    public function addGrade($id, $value)
+    public function addGrade($id, $value): bool
     {
         $this->loadDB();
         $data = $this->db->getSubject($id);
