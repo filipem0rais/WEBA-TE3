@@ -2,15 +2,19 @@
 declare(strict_types=1);
 
 require_once "Controllers/Controller.php";
+$controller = new Controller();
 $action = null;
+
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
     $action = $_GET['action'];
+} else {
+    $code = 400;
+    require_once('Views/template.php');
+    $viewLoaded = true;
 }
 
 try {
-    $controller = new Controller();
-
     $viewLoaded = false;
     if ($action == 'subject') {
         if (isset($_GET['fetchGrades']) && !isset($_GET['id'])) {
@@ -41,9 +45,7 @@ try {
             $viewLoaded = $controller->getSubjects();
         }
 
-
     } else if ($action == 'grade') {
-        // TODO : lister les notes avec leurs champs
         if (!isset($_GET['bySubjectId']) && !isset($_GET['byGradeId'])) {
             $controller->getGrades();
         }
@@ -72,20 +74,14 @@ try {
                 $viewLoaded = true;
             }
         }
-
-
-    } else if ($action == 'grade') {
-        // TODO : lister les notes avec leurs champs
     } else if ($action == 'addGrade') {
 
         $id = $controller->test_input($_GET['idSubject']);
         $value = $controller->test_input($_GET['value']);
 
         if (isset($id) && isset($value)) {
-            $viewLoaded = $controller->addGrade($id,$value);
-        }
-        else
-        {
+            $viewLoaded = $controller->addGrade($id, $value);
+        } else {
             $viewLoaded = true;
             $code = 400;
             require_once('Views/template.php');
@@ -96,15 +92,21 @@ try {
 
         if (isset($id)) {
             $viewLoaded = $controller->deleteGrade($id);
-        }
-        else
-        {
+        } else {
             $viewLoaded = true;
             $code = 400;
             require_once('Views/template.php');
         }
     } else if ($action == 'subjectAverage') {
-        // TODO : moyenne d'une branche
+
+        if (isset($_GET['idSubject']) && is_numeric($_GET['idSubject'])) {
+            $id = $controller->test_input($_GET['idSubject']);
+            $controller->getAverage($id);
+        } else {
+            $viewLoaded = true;
+            $code = 400;
+            require_once('Views/template.php');
+        }
     }
 
     if (!$viewLoaded) {
