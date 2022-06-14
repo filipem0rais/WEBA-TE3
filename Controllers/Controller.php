@@ -6,25 +6,28 @@ class Controller
 {
     private $db;
 
+    public function errorCode($code)
+    {
+        require_once('Views/template.php');
+        return true;
+    }
+
     private function loadDB()
     {
         if ($this->db == null) {
             try {
                 $this->db = new Database();
             } catch (Exception $e) {
-                $code = 500;
-                include_once "Views/template.php";
-                return;
+                $this->errorCode(500);
             }
         }
     }
 
+
     public function getSubjects(): bool
     {
         $this->loadDB();
-
         $data = $this->db->getSubjects();
-
         $code = 200;
         include_once "Views/template.php";
         return true;
@@ -105,14 +108,14 @@ class Controller
         return true;
     }
 
-    function test_input($data)
+    function clear_input($data)
     {
         $data = trim($data);
         $data = stripslashes($data);
         return htmlspecialchars($data);
     }
 
-    public function getGrades()
+    public function getGrades(): bool
     {
         $this->loadDB();
         $data = $this->db->getGrades();
@@ -124,7 +127,7 @@ class Controller
         return true;
     }
 
-    public function getGradesFromSubject($id)
+    public function getGradesFromSubject($id): bool
     {
         $this->loadDB();
         $data = $this->db->getGradesFromSubject($id);
@@ -136,7 +139,7 @@ class Controller
         return true;
     }
 
-    public function getGrade($id)
+    public function getGrade($id): bool
     {
         $this->loadDB();
         $data = $this->db->getGrade($id);
@@ -148,7 +151,7 @@ class Controller
         return true;
     }
 
-    public function getAverage($id)
+    public function getAverage($id): bool
     {
         $this->loadDB();
         $data = $this->db->getAverage($id)['AVG'];
@@ -159,4 +162,6 @@ class Controller
         include_once "Views/template.php";
         return true;
     }
+
+
 }

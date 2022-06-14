@@ -4,28 +4,27 @@ declare(strict_types=1);
 require_once "Controllers/Controller.php";
 $controller = new Controller();
 $action = null;
-
+$viewLoaded = false;
+$count = count($_GET);
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $code = 400;
-    require_once('Views/template.php');
-    $viewLoaded = true;
+    $viewLoaded = $controller->errorCode(400);
 }
 
 try {
-    $viewLoaded = false;
     if ($action == 'subject') {
+        if ($count > 3) {
+            $viewLoaded = $controller->errorCode(400);
+        }
         if (isset($_GET['fetchGrades']) && !isset($_GET['id'])) {
-            if ($_GET['fetchGrades'] == 'true') {
+            if ($_GET['fetchGrades'] == 'true' && $count == 2) {
                 $viewLoaded = $controller->getGradesBySubjects();
-            } else if ($_GET['fetchGrades'] == 'false') {
+            } else if ($_GET['fetchGrades'] == 'false' && $count == 2) {
                 $viewLoaded = $controller->getSubjects();
             } else {
-                $code = 400;
-                require_once('Views/template.php');
-                $viewLoaded = true;
+                $viewLoaded = $controller->errorCode(400);
             }
         } else if (isset($_GET['id'])) {
             if (is_numeric($_GET['id'])) {
@@ -35,86 +34,83 @@ try {
                     } else if ($_GET['fetchGrades'] == 'false') {
                         $viewLoaded = $controller->getSubject($_GET['id']);
                     } else {
-                        $code = 400;
-                        require_once('Views/template.php');
-                        $viewLoaded = true;
+                        $viewLoaded = $controller->errorCode(400);
                     }
+                } else if ($count == 2) {
+                    $viewLoaded = $controller->getSubject($_GET['id']);
                 }
             }
-        } else {
+        } else if ($count == 1) {
             $viewLoaded = $controller->getSubjects();
+        } else {
+            $viewLoaded = $controller->errorCode(400);
         }
+
 
     } else if ($action == 'grade') {
-        if (!isset($_GET['bySubjectId']) && !isset($_GET['byGradeId'])) {
-            $controller->getGrades();
-        }
-
-        if (isset($_GET['bySubjectId'], $_GET['byGradeId'])) {
-            $code = 400;
-            require_once('Views/template.php');
-            $viewLoaded = true;
+        if ($count > 2) {
+            $viewLoaded = $controller->errorCode(400);
+        } else if (!isset($_GET['bySubjectId']) && $count == 1) {
+            $viewLoaded = $controller->getGrades();
         }
 
         if (isset($_GET['bySubjectId'])) {
             if (is_numeric($_GET['bySubjectId'])) {
-                $controller->getGradesFromSubject($_GET['bySubjectId']);
+                $viewLoaded = $controller->getGradesFromSubject($_GET['bySubjectId']);
             } else {
-                $code = 400;
-                require_once('Views/template.php');
-                $viewLoaded = true;
+                $viewLoaded = $controller->errorCode(400);
             }
         }
         if (isset($_GET['byGradeId'])) {
             if (is_numeric($_GET['byGradeId'])) {
-                $controller->getGrade($_GET['byGradeId']);
+                $viewLoaded = $controller->getGrade($_GET['byGradeId']);
             } else {
-                $code = 400;
-                require_once('Views/template.php');
-                $viewLoaded = true;
+                $viewLoaded = $controller->errorCode(400);
             }
         }
     } else if ($action == 'addGrade') {
 
-        $id = $controller->test_input($_GET['idSubject']);
-        $value = $controller->test_input($_GET['value']);
-
-        if (isset($id) && isset($value)) {
-            $viewLoaded = $controller->addGrade($id, $value);
+        if ($count == 2) {
+            if (isset($_GET['idSubject']) && isset($_GET['value'])) {
+                $id = $controller->clear_input($_GET['idSubject']);
+                $value = $controller->clear_input($_GET['value']);
+                $viewLoaded = $controller->addGrade($id, $value);
+            } else {
+                $viewLoaded = $controller->errorCode(400);
+            }
         } else {
-            $viewLoaded = true;
-            $code = 400;
-            require_once('Views/template.php');
+            $viewLoaded = $controller->errorCode(400);
         }
+
     } else if ($action == 'deleteGrade') {
 
-        $id = $controller->test_input($_GET['idGrade']);
-
-        if (isset($id)) {
-            $viewLoaded = $controller->deleteGrade($id);
+        if ($count == 1) {
+            $id = $controller->clear_input($_GET['idGrade']);
+            if (isset($id)) {
+                $viewLoaded = $controller->deleteGrade($id);
+            } else {
+                $viewLoaded = $controller->errorCode(400);
+            }
         } else {
-            $viewLoaded = true;
-            $code = 400;
-            require_once('Views/template.php');
+            $viewLoaded = $controller->errorCode(400);
         }
     } else if ($action == 'subjectAverage') {
-
-        if (isset($_GET['idSubject']) && is_numeric($_GET['idSubject'])) {
-            $id = $controller->test_input($_GET['idSubject']);
-            $controller->getAverage($id);
+        if ($count == 1) {
+            if (isset($_GET['idSubject']) && is_numeric($_GET['idSubject'])) {
+                $id = $controller->clear_input($_GET['idSubject']);
+                $viewLoaded = $controller->getAverage($id);
+            } else {
+                $viewLoaded = $controller->errorCode(400);
+            }
         } else {
-            $viewLoaded = true;
-            $code = 400;
-            require_once('Views/template.php');
+            $viewLoaded = $controller->errorCode(400);
         }
-    }
 
+    }
     if (!$viewLoaded) {
-        $code = 404;
-        require_once('Views/template.php');
+        $controller->errorCode(404);
     }
 
 } catch (Exception $e) {
-    $code = 500;
-    require_once('Views/template.php');
+    $controller->errorCode(500);
 }
