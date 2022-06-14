@@ -23,14 +23,24 @@ class Controller
         }
     }
 
+    public function clear_input($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        return htmlspecialchars($data);
+    }
+
+    public function sendResponse($code, $data = null)
+    {
+        include_once "Views/template.php";
+        return true;
+    }
 
     public function getSubjects(): bool
     {
         $this->loadDB();
         $data = $this->db->getSubjects();
-        $code = 200;
-        include_once "Views/template.php";
-        return true;
+        return $this->sendResponse(200, $data);
     }
 
     public function addGrade($id, $value): bool
@@ -42,14 +52,10 @@ class Controller
                 return false;
             } else {
                 $data = $this->db->addGrade($id, $value);
-                $code = 201;
-                include_once "Views/template.php";
-                return true;
+                return $this->sendResponse(201, $data);
             }
         } else {
-            $code = 400;
-            include_once "Views/template.php";
-            return true;
+            return $this->sendResponse(400);
         }
     }
 
@@ -62,14 +68,10 @@ class Controller
                 return false;
             } else {
                 $data = $this->db->deleteGrade($id);
-                $code = 204;
-                include_once "Views/template.php";
-                return true;
+                return $this->sendResponse(204, $data);
             }
         } else {
-            $code = 400;
-            include_once "Views/template.php";
-            return true;
+            return $this->sendResponse(400);
         }
     }
 
@@ -87,12 +89,7 @@ class Controller
         for ($i = 0; $i < count($subjects); $i++) {
             $subjects[$i]['grades'] = $this->db->getGradesFromSubject($subjects[$i]['idSubject']);
         }
-
-        $data = $subjects;
-
-        $code = 200;
-        include_once "Views/template.php";
-        return true;
+        return $this->sendResponse(200, $subjects);
     }
 
     public function getSubject($id): bool
@@ -103,17 +100,9 @@ class Controller
         if (empty($data)) {
             return false;
         }
-        $code = 200;
-        include_once "Views/template.php";
-        return true;
+        return $this->sendResponse(200, $data);
     }
 
-    function clear_input($data)
-    {
-        $data = trim($data);
-        $data = stripslashes($data);
-        return htmlspecialchars($data);
-    }
 
     public function getGrades(): bool
     {
@@ -122,9 +111,7 @@ class Controller
         if (empty($data)) {
             return false;
         }
-        $code = 200;
-        include_once "Views/template.php";
-        return true;
+        return $this->sendResponse(200, $data);
     }
 
     public function getGradesFromSubject($id): bool
@@ -134,9 +121,7 @@ class Controller
         if (empty($data)) {
             return false;
         }
-        $code = 200;
-        include_once "Views/template.php";
-        return true;
+        return $this->sendResponse(200, $data);
     }
 
     public function getGrade($id): bool
@@ -146,9 +131,7 @@ class Controller
         if (empty($data)) {
             return false;
         }
-        $code = 200;
-        include_once "Views/template.php";
-        return true;
+        return $this->sendResponse(200, $data);
     }
 
     public function getAverage($id): bool
@@ -158,9 +141,7 @@ class Controller
         if (empty($data)) {
             return false;
         }
-        $code = 200;
-        include_once "Views/template.php";
-        return true;
+        return $this->sendResponse(200, $data);
     }
 
 
