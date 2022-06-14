@@ -55,8 +55,11 @@ try {
     } else if ($action == 'grade') {
         if ($count > 2) {
             $viewLoaded = $controller->errorCode(400);
-        } else if (!isset($_GET['bySubjectId']) && $count == 1) {
+        }
+        if ($count == 1) {
             $viewLoaded = $controller->getGrades();
+        } else if (!isset($_GET['bySubjectId']) && !isset($_GET['byGradeId'])) {
+            $viewLoaded = $controller->errorCode(400);
         }
 
         if (isset($_GET['bySubjectId'])) {

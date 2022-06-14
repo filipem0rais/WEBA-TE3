@@ -6,12 +6,21 @@ class Controller
 {
     private $db;
 
+    /**
+     * Renvoie un code d'erreur
+     * @param $code
+     * @return bool
+     */
     public function errorCode($code)
     {
         require_once('Views/template.php');
         return true;
     }
 
+    /**
+     * Prepare la connection à la base de donnée
+     * @return void
+     */
     private function loadDB()
     {
         if ($this->db == null) {
@@ -23,19 +32,34 @@ class Controller
         }
     }
 
-    public function clear_input($data)
+    /**
+     * Nettoie les inputs
+     * @param $data
+     * @return string
+     */
+    public function clear_input($data): string
     {
         $data = trim($data);
         $data = stripslashes($data);
         return htmlspecialchars($data);
     }
 
-    public function sendResponse($code, $data = null)
+    /**
+     * Renvoie une reponse avec un code http
+     * @param $code
+     * @param $data
+     * @return bool
+     */
+    public function sendResponse($code, $data = null): bool
     {
         include_once "Views/template.php";
         return true;
     }
 
+    /**
+     * Renvoie la liste des branches
+     * @return bool
+     */
     public function getSubjects(): bool
     {
         $this->loadDB();
@@ -43,6 +67,12 @@ class Controller
         return $this->sendResponse(200, $data);
     }
 
+    /**
+     * Ajout d'une note
+     * @param $id
+     * @param $value
+     * @return bool
+     */
     public function addGrade($id, $value): bool
     {
         $this->loadDB();
@@ -59,7 +89,12 @@ class Controller
         }
     }
 
-    public function deleteGrade($id)
+    /**
+     * Supression d'une note
+     * @param $id
+     * @return bool
+     */
+    public function deleteGrade($id): bool
     {
         $this->loadDB();
         $check = $this->db->getGrade($id);
@@ -75,6 +110,11 @@ class Controller
         }
     }
 
+    /**
+     * Renvoie la liste des notes
+     * @param $id
+     * @return bool
+     */
     public function getGradesBySubjects($id = null): bool
     {
         $this->loadDB();
@@ -92,6 +132,11 @@ class Controller
         return $this->sendResponse(200, $subjects);
     }
 
+    /**
+     * Renvoie une branche
+     * @param $id
+     * @return bool
+     */
     public function getSubject($id): bool
     {
         $this->loadDB();
@@ -103,7 +148,10 @@ class Controller
         return $this->sendResponse(200, $data);
     }
 
-
+    /**
+     * Renvoie les notes
+     * @return bool
+     */
     public function getGrades(): bool
     {
         $this->loadDB();
@@ -114,6 +162,11 @@ class Controller
         return $this->sendResponse(200, $data);
     }
 
+    /**
+     * Renvoie les notes d'une branche
+     * @param $id
+     * @return bool
+     */
     public function getGradesFromSubject($id): bool
     {
         $this->loadDB();
@@ -124,6 +177,11 @@ class Controller
         return $this->sendResponse(200, $data);
     }
 
+    /**
+     * Renvoie une note selon son id
+     * @param $id
+     * @return bool
+     */
     public function getGrade($id): bool
     {
         $this->loadDB();
@@ -134,6 +192,11 @@ class Controller
         return $this->sendResponse(200, $data);
     }
 
+    /**
+     * Renvoie la moyenne d'une branche
+     * @param $id
+     * @return bool
+     */
     public function getAverage($id): bool
     {
         $this->loadDB();
