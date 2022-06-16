@@ -5,6 +5,10 @@ class Database
 {
     private $db;
 
+    /**
+     * Constructeur
+     * @param bool $withErrors
+     */
     public function __construct(bool $withErrors = false)
     {
         $this->db = new PDO("mysql:host=localhost;dbname=weba_te3;charset=UTF8", "root", "");
@@ -14,6 +18,10 @@ class Database
         }
     }
 
+    /**
+     * Renvoie toutes les branches
+     * @return array|false
+     */
     public function getSubjects()
     {
         $stmt = $this->db->prepare("SELECT * FROM subject");
@@ -21,6 +29,11 @@ class Database
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Renvoie une branche en particulier
+     * @param $id
+     * @return array|false
+     */
     public function getSubject($id)
     {
         $stmt = $this->db->prepare("SELECT * FROM subject WHERE idSubject = :id");
@@ -28,6 +41,11 @@ class Database
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Renvoie les notes associés à une branche
+     * @param $id
+     * @return array|false
+     */
     public function getGradesFromSubject($id)
     {
         $stmt = $this->db->prepare("SELECT * FROM grade WHERE idSubject = :id");
@@ -35,6 +53,12 @@ class Database
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Ajoute une note
+     * @param $id
+     * @param $value
+     * @return false|string
+     */
     public function addGrade($id, $value)
     {
         $stmt = $this->db->prepare("INSERT INTO grade (idGrade, idSubject, description, value, date) VALUES (NULL,  :id, NULL, :value, NULL); ");
@@ -42,6 +66,10 @@ class Database
         return $this->db->lastInsertId();
     }
 
+    /**
+     * Renvoie toutes les notes
+     * @return array|false
+     */
     public function getGrades()
     {
         $stmt = $this->db->prepare("SELECT * FROM grade");
@@ -49,6 +77,11 @@ class Database
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Renvoie les informations d'une note
+     * @param $id
+     * @return mixed
+     */
     public function getGrade($id)
     {
         $stmt = $this->db->prepare("SELECT * FROM grade WHERE idGrade = :id");
@@ -56,12 +89,22 @@ class Database
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Supprime une note
+     * @param $id
+     * @return void
+     */
     public function deleteGrade($id)
     {
         $stmt = $this->db->prepare("DELETE from grade where idGrade = :id");
         $stmt->execute(["id" => $id]);
     }
 
+    /**
+     * Renvoie la moyenne des notes d'une branche
+     * @param $id
+     * @return mixed
+     */
     public function getAverage($id)
     {
         $stmt = $this->db->prepare("SELECT AVG(value) AS 'AVG' FROM grade WHERE idSubject = :id");
