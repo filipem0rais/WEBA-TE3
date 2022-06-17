@@ -68,3 +68,8 @@ devra être détaillée avec les éléments suivants :
   Utilisez le logiciel Postman pour interagir avec votre API et la tester. Une
   « [collection](Tests/WEBA-TE3.postman_collection.json) »
   Postman est à rendre.
+
+## Remerciements
+
+Nous tenons particulièrement a remercier toutes les personnes qui ont contribué à ce projet, c'est-à-dire : Luca, Filipe et Monsieur Gander.
+Sans l'aide de celui-ci, notre projet ne serait pas aux petits oignions. Ou alors il serait aux petits oignions de basse qualité.
