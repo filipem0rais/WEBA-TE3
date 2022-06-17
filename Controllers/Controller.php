@@ -64,7 +64,12 @@ class Controller
     {
         $this->loadDB();
         $data = $this->db->getSubjects();
-        return $this->sendResponse(200, $data);
+        if (!empty($data)){
+            return $this->sendResponse(200, $data);
+        } else {
+            return $this->sendResponse(204, $data);
+        }
+
     }
 
     /**
@@ -129,7 +134,11 @@ class Controller
         for ($i = 0; $i < count($subjects); $i++) {
             $subjects[$i]['grades'] = $this->db->getGradesFromSubject($subjects[$i]['idSubject']);
         }
-        return $this->sendResponse(200, $subjects);
+        if (!empty($subjects)){
+            return $this->sendResponse(200, $subjects);
+        } else {
+            return $this->sendResponse(204, $subjects);
+        }
     }
 
     /**
@@ -142,10 +151,11 @@ class Controller
         $this->loadDB();
 
         $data = $this->db->getSubject($id);
-        if (empty($data)) {
-            return false;
+        if (!empty($data)){
+            return $this->sendResponse(200, $data);
+        } else {
+            return $this->sendResponse(204, $data);
         }
-        return $this->sendResponse(200, $data);
     }
 
     /**
@@ -156,10 +166,11 @@ class Controller
     {
         $this->loadDB();
         $data = $this->db->getGrades();
-        if (empty($data)) {
-            return false;
+        if (!empty($data)){
+            return $this->sendResponse(200, $data);
+        } else {
+            return $this->sendResponse(204, $data);
         }
-        return $this->sendResponse(200, $data);
     }
 
     /**
@@ -171,10 +182,11 @@ class Controller
     {
         $this->loadDB();
         $data = $this->db->getGradesFromSubject($id);
-        if (empty($data)) {
-            return false;
+        if (!empty($data)){
+            return $this->sendResponse(200, $data);
+        } else {
+            return $this->sendResponse(204, $data);
         }
-        return $this->sendResponse(200, $data);
     }
 
     /**
@@ -186,10 +198,11 @@ class Controller
     {
         $this->loadDB();
         $data = $this->db->getGrade($id);
-        if (empty($data)) {
-            return false;
+        if (!empty($data)){
+            return $this->sendResponse(200, $data);
+        } else {
+            return $this->sendResponse(204, $data);
         }
-        return $this->sendResponse(200, $data);
     }
 
     /**
@@ -201,10 +214,11 @@ class Controller
     {
         $this->loadDB();
         $data = $this->db->getAverage($id)['AVG'];
-        if (empty($data)) {
-            return false;
+        if (!empty($data)){
+            return $this->sendResponse(200, $data);
+        } else {
+            return $this->sendResponse(204, $data);
         }
-        return $this->sendResponse(200, $data);
     }
 
 

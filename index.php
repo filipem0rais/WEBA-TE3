@@ -2,11 +2,13 @@
 declare(strict_types=1);
 
 require_once "Controllers/Controller.php";
+
 $controller = new Controller();
 $action = null;
 $viewLoaded = false;
 $count = count($_GET);
 
+// Vérification qu'une action est définie
 if (isset($_GET['action']) && !empty($_GET['action'])) {
     $action = $_GET['action'];
 } else {
@@ -14,10 +16,12 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 }
 
 try {
+    // Requêtes de branches
     if ($action == 'subject') {
         if ($count > 3) {
             $viewLoaded = $controller->errorCode(400);
         }
+        // Si fetchGrades en paramètre mais pas idSubject
         if (isset($_GET['fetchGrades']) && !isset($_GET['idSubject'])) {
             if ($_GET['fetchGrades'] == 'true' && $count == 2) {
                 $viewLoaded = $controller->getGradesBySubjects();
@@ -26,8 +30,8 @@ try {
             } else {
                 $viewLoaded = $controller->errorCode(400);
             }
+            // Si idSubject est défini
         } else if (isset($_GET['idSubject'])) {
-
             if (is_numeric($_GET['idSubject'])) {
                 $id = $controller->clear_input($_GET['idSubject']);
                 if (isset($_GET['fetchGrades'])) {
@@ -45,13 +49,14 @@ try {
             } else {
                 $viewLoaded = $controller->errorCode(400);
             }
+            // Affichage de toutes les notes
         } else if ($count == 1) {
             $viewLoaded = $controller->getSubjects();
         } else {
             $viewLoaded = $controller->errorCode(400);
         }
 
-
+        // Requêtes de notes
     } else if ($action == 'grade') {
         if ($count > 2) {
             $viewLoaded = $controller->errorCode(400);
@@ -78,6 +83,7 @@ try {
                 $viewLoaded = $controller->errorCode(400);
             }
         }
+        // Requête ajout d'une note
     } else if ($action == 'addGrade') {
         if (isset($_GET['idSubject']) && isset($_GET['value']) && "PUT" == $_SERVER['REQUEST_METHOD'] && $count == 3) {
             $id = $controller->clear_input($_GET['idSubject']);
@@ -86,6 +92,7 @@ try {
         } else {
             $viewLoaded = $controller->errorCode(400);
         }
+        // Requête de suppression d'une note
     } else if ($action == 'deleteGrade') {
         if (isset($_GET['idGrade']) && "DELETE" == $_SERVER['REQUEST_METHOD'] && $count == 2) {
 
@@ -94,6 +101,7 @@ try {
         } else {
             $viewLoaded = $controller->errorCode(400);
         }
+        // Requête pour la moyenne d'une branche
     } else if ($action == 'subjectAverage') {
         if (isset($_GET['idSubject']) && is_numeric($_GET['idSubject']) && $count == 2) {
             $id = $controller->clear_input($_GET['idSubject']);
