@@ -1,11 +1,11 @@
 {
-	"id": "9fceb89f-4d7f-465a-848e-9a94d08e385e",
+	"id": "16d0e11d-e252-45e1-81d8-2f77af0c8f19",
 	"name": "WEBA-TE3",
-	"timestamp": "2022-06-17T13:13:33.760Z",
+	"timestamp": "2022-06-17T13:43:24.632Z",
 	"collection_id": "21383626-61633fff-2156-48ef-b5a1-01e3fce4c51e",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 20,
+	"totalPass": 21,
 	"totalFail": 0,
 	"results": [
 		{
@@ -39,7 +39,7 @@
 			"id": "091a8fd9-bcb9-41e5-86e8-dabee7d9c354",
 			"name": "FetchGrades OK",
 			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true",
-			"time": 21,
+			"time": 10,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -54,7 +54,7 @@
 				}
 			},
 			"times": [
-				21
+				10
 			],
 			"allTests": [
 				{
@@ -93,7 +93,7 @@
 			"id": "6a422be2-cfc4-4f6e-819e-6664342621ce",
 			"name": "fetchGrades + idSubject OK",
 			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject=1",
-			"time": 17,
+			"time": 18,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -108,7 +108,7 @@
 				}
 			},
 			"times": [
-				17
+				18
 			],
 			"allTests": [
 				{
@@ -120,7 +120,7 @@
 			"id": "3cbeff79-927e-4e24-97a0-2d53fc603db8",
 			"name": "incorect param",
 			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject222=1",
-			"time": 4,
+			"time": 5,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -135,7 +135,7 @@
 				}
 			},
 			"times": [
-				4
+				5
 			],
 			"allTests": [
 				{
@@ -147,7 +147,7 @@
 			"id": "0807c90f-fcf6-469e-8421-c79e00f0b3ae",
 			"name": "additionnal param",
 			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject=1&another=1",
-			"time": 17,
+			"time": 33,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -162,7 +162,7 @@
 				}
 			},
 			"times": [
-				17
+				33
 			],
 			"allTests": [
 				{
@@ -174,7 +174,7 @@
 			"id": "336effb4-4278-431e-81a2-9ba5887a5511",
 			"name": "id not found",
 			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject=9999999999999999999",
-			"time": 32,
+			"time": 33,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -189,7 +189,7 @@
 				}
 			},
 			"times": [
-				32
+				33
 			],
 			"allTests": [
 				{
@@ -228,7 +228,7 @@
 			"id": "bdfdc8a6-cbdc-47a8-9349-1cbb4a804957",
 			"name": "bySubjectID OK",
 			"url": "http://localhost/WEBA-TE3/?action=grade&bySubjectId=2",
-			"time": 6,
+			"time": 32,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -243,7 +243,7 @@
 				}
 			},
 			"times": [
-				6
+				32
 			],
 			"allTests": [
 				{
@@ -255,7 +255,7 @@
 			"id": "82f773bd-7f36-4936-be33-2febfe7a0b7e",
 			"name": "byGradeID OK Copy",
 			"url": "http://localhost/WEBA-TE3/?action=grade&byGradeId=3",
-			"time": 6,
+			"time": 20,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -270,7 +270,7 @@
 				}
 			},
 			"times": [
-				6
+				20
 			],
 			"allTests": [
 				{
@@ -282,7 +282,7 @@
 			"id": "3f5d890f-07ae-47f3-8871-31be0e315032",
 			"name": "both param",
 			"url": "http://localhost/WEBA-TE3/?action=grade&bySubjectId=1&byGradeId=3",
-			"time": 6,
+			"time": 9,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -297,7 +297,7 @@
 				}
 			},
 			"times": [
-				6
+				9
 			],
 			"allTests": [
 				{
@@ -336,6 +336,114 @@
 			"id": "6ceb53f7-c5ac-4d35-b491-78c7bab11c95",
 			"name": "additionnal param",
 			"url": "http://localhost/WEBA-TE3/?action=grade&a=a",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "d0a2cb7c-2fc5-4e2b-9d92-b6e490265442",
+			"name": "id not found",
+			"url": "http://localhost/WEBA-TE3/?action=grade&byGradeId=9999999999999999999",
+			"time": 17,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "9695e290-b5bf-4fd5-9d46-1b17d986a8f6",
+			"name": "Add Grade OK",
+			"url": "http://localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=6",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "4add7904-4467-48f3-aaff-081000c9eac8",
+			"name": "Add Grade + description OK",
+			"url": "http://localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=6&description=Test%20exemple",
+			"time": 20,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "5720bd4b-6f9f-43b6-8e75-68abab930ed1",
+			"name": "Add Grade incorrect param",
+			"url": "http://localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=a",
 			"time": 6,
 			"responseCode": {
 				"code": 400,
@@ -360,91 +468,10 @@
 			]
 		},
 		{
-			"id": "d0a2cb7c-2fc5-4e2b-9d92-b6e490265442",
-			"name": "id not found",
-			"url": "http://localhost/WEBA-TE3/?action=grade&byGradeId=9999999999999999999",
-			"time": 31,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				31
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "9695e290-b5bf-4fd5-9d46-1b17d986a8f6",
-			"name": "Add Grade OK",
-			"url": "http://localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=4",
-			"time": 18,
-			"responseCode": {
-				"code": 201,
-				"name": "Created"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				18
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "5720bd4b-6f9f-43b6-8e75-68abab930ed1",
-			"name": "Add Grade incorrect param",
-			"url": "http://localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=a",
-			"time": 19,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				19
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
 			"id": "9963be0d-07e5-4b13-80fe-1c51715463fe",
 			"name": "deleteGrade fail",
 			"url": "http://localhost/WEBA-TE3/?action=deleteGrade&idGrade=999999999999",
-			"time": 16,
+			"time": 33,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -459,7 +486,7 @@
 				}
 			},
 			"times": [
-				16
+				33
 			],
 			"allTests": [
 				{
@@ -471,7 +498,7 @@
 			"id": "03491779-98a9-42be-9193-8824be95cb94",
 			"name": "deleteGrade OK",
 			"url": "http://localhost/WEBA-TE3/?action=deleteGrade&idGrade=1",
-			"time": 18,
+			"time": 19,
 			"responseCode": {
 				"code": 204,
 				"name": "No Content"
@@ -486,7 +513,7 @@
 				}
 			},
 			"times": [
-				18
+				19
 			],
 			"allTests": [
 				{
@@ -525,7 +552,7 @@
 			"id": "f50c4ebe-43ef-4e34-9f5e-55e0520fde42",
 			"name": "GetAverage id not found",
 			"url": "http://localhost/WEBA-TE3/?action=subjectAverage&idSubject=999999999999",
-			"time": 16,
+			"time": 17,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -540,7 +567,7 @@
 				}
 			},
 			"times": [
-				16
+				17
 			],
 			"allTests": [
 				{
@@ -550,7 +577,7 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 324,
+	"totalTime": 379,
 	"collection": {
 		"requests": [
 			{
@@ -611,6 +638,10 @@
 			},
 			{
 				"id": "9695e290-b5bf-4fd5-9d46-1b17d986a8f6",
+				"method": "PUT"
+			},
+			{
+				"id": "4add7904-4467-48f3-aaff-081000c9eac8",
 				"method": "PUT"
 			},
 			{

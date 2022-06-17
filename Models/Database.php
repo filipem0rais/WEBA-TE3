@@ -59,10 +59,10 @@ class Database
      * @param $value
      * @return false|string
      */
-    public function addGrade($id, $value)
+    public function addGrade($id, $value, $description)
     {
-        $stmt = $this->db->prepare("INSERT INTO grade (idGrade, idSubject, description, value, date) VALUES (NULL,  :id, NULL, :value, NULL); ");
-        $stmt->execute(["id" => $id, "value" => $value]);
+        $stmt = $this->db->prepare("INSERT INTO grade (idGrade, idSubject, description, value, date) VALUES (NULL,  :id, :description, :value, NOW()); ");
+        $stmt->execute(["id" => $id, "value" => $value, "description"=>$description]);
         return $this->db->lastInsertId();
     }
 

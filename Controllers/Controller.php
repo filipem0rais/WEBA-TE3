@@ -78,7 +78,7 @@ class Controller
      * @param $id
      * @return bool
      */
-    public function addGrade($id, $value): bool
+    public function addGrade($id, $value, $description): bool
     {
         $this->loadDB();
         $data = $this->db->getSubject($id);
@@ -86,8 +86,8 @@ class Controller
             if (empty($data)) {
                 return false;
             } else {
-                $data = $this->db->addGrade($id, $value);
-                return $this->sendResponse(201, $data);
+                $data = $this->db->addGrade($id, $value, $description);
+                return $this->sendResponse(201, ['new_id'=>(int)$data]);
             }
         } else {
             return $this->sendResponse(400);
@@ -215,7 +215,7 @@ class Controller
         $this->loadDB();
         $data = $this->db->getAverage($id)['AVG'];
         if (!empty($data)) {
-            return $this->sendResponse(200, $data);
+            return $this->sendResponse(200, ['average'=>(float)$data]);
         } else {
             return false;
         }

@@ -85,10 +85,17 @@ try {
         }
         // Requête ajout d'une note
     } else if ($action == 'addGrade') {
-        if (isset($_GET['idSubject']) && isset($_GET['value']) && "PUT" == $_SERVER['REQUEST_METHOD'] && $count == 3) {
+        if (isset($_GET['idSubject'], $_GET['value']) && "PUT" == $_SERVER['REQUEST_METHOD'] && ($count == 4 || $count == 3)) {
             $id = $controller->clear_input($_GET['idSubject']);
             $value = $controller->clear_input($_GET['value']);
-            $viewLoaded = $controller->addGrade($id, $value);
+            if ($count == 4){
+                if (isset ($_GET['description'])){
+                    $description = $controller->clear_input($_GET['description']);
+                } else {
+                    $description = null;
+                }
+            }
+            $viewLoaded = $controller->addGrade($id, $value, $description);
         } else {
             $viewLoaded = $controller->errorCode(400);
         }

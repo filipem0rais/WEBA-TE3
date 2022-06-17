@@ -698,7 +698,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=4",
+							"raw": "localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=6",
 							"host": [
 								"localhost"
 							],
@@ -717,7 +717,56 @@
 								},
 								{
 									"key": "value",
-									"value": "4"
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Grade + description OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=6&description=Test exemple",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "addGrade"
+								},
+								{
+									"key": "idSubject",
+									"value": "2"
+								},
+								{
+									"key": "value",
+									"value": "6"
+								},
+								{
+									"key": "description",
+									"value": "Test exemple"
 								}
 							]
 						}
