@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 DROP DATABASE IF EXISTS weba_te3;
 CREATE DATABASE weba_te3;
 
+USE weba_te3;
+
 CREATE TABLE `grade` (
   `idGrade` int(11) NOT NULL,
   `idSubject` int(11) NOT NULL,
