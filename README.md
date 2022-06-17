@@ -61,7 +61,7 @@ devra être détaillée avec les éléments suivants :
 - Ses codes HTTP de retours ;
 - Le format des données retournées.
 
-  Dans les fichiers sources, une documentation détaillant uniquement la première requête
+  Dans les fichiers sources, une [documentation](Documentation/documentation.md) détaillant uniquement la première requête
   est fournie. Vous pouvez l’utiliser comme référence pour votre documentation.
-  Utilisez le logiciel Postman pour interagir avec votre API et la tester. Une « collection »
+  Utilisez le logiciel Postman pour interagir avec votre API et la tester. Une « [collection](Tests/WEBA-TE3.postman_collection.json) »
   Postman est à rendre.
