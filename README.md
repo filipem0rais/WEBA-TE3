@@ -55,13 +55,16 @@ Pour chaque requête, supportez les différents types de retours vus en cours, s
 En plus du code source de l’API, il est demandé de réaliser une documentation technique
 permettant à un développeur externe d’utiliser votre API. Chaque requête de votre API
 devra être détaillée avec les éléments suivants :
+
 - Description de la requête (ce qu’elle permet de faire) ;
 - Son URL ;
 - Ses éventuels paramètres et leur format attendu ;
 - Ses codes HTTP de retours ;
 - Le format des données retournées.
 
-  Dans les fichiers sources, une [documentation](Documentation/documentation.md) détaillant uniquement la première requête
+  Dans les fichiers sources, une [documentation](Documentation/documentation.md) détaillant uniquement la première
+  requête
   est fournie. Vous pouvez l’utiliser comme référence pour votre documentation.
-  Utilisez le logiciel Postman pour interagir avec votre API et la tester. Une « [collection](Tests/WEBA-TE3.postman_collection.json) »
+  Utilisez le logiciel Postman pour interagir avec votre API et la tester. Une
+  « [collection](Tests/WEBA-TE3.postman_collection.json) »
   Postman est à rendre.
