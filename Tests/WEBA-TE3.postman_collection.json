@@ -1,0 +1,918 @@
+{
+	"info": {
+		"_postman_id": "61633fff-2156-48ef-b5a1-01e3fce4c51e",
+		"name": "WEBA-TE3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21383626"
+	},
+	"item": [
+		{
+			"name": "GetSubjects",
+			"item": [
+				{
+					"name": "Single OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=subject",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "subject"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FetchGrades OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=subject&fetchGrades=true",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "subject"
+								},
+								{
+									"key": "fetchGrades",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "idSubject OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=subject&idSubject=1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "subject"
+								},
+								{
+									"key": "idSubject",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchGrades + idSubject OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject=1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "subject"
+								},
+								{
+									"key": "fetchGrades",
+									"value": "true"
+								},
+								{
+									"key": "idSubject",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "incorect param",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject222=1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "subject"
+								},
+								{
+									"key": "fetchGrades",
+									"value": "true"
+								},
+								{
+									"key": "idSubject222",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "additionnal param",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject=1&another=1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "subject"
+								},
+								{
+									"key": "fetchGrades",
+									"value": "true"
+								},
+								{
+									"key": "idSubject",
+									"value": "1"
+								},
+								{
+									"key": "another",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "id not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject=9999999999999999999",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "subject"
+								},
+								{
+									"key": "fetchGrades",
+									"value": "true"
+								},
+								{
+									"key": "idSubject",
+									"value": "9999999999999999999"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetGrades",
+			"item": [
+				{
+					"name": "Single OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=grade",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "grade"
+								},
+								{
+									"key": "bySubjectId",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "byGradeId",
+									"value": "15",
+									"disabled": true
+								},
+								{
+									"key": "a",
+									"value": "a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bySubjectID OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=grade&bySubjectId=2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "grade"
+								},
+								{
+									"key": "bySubjectId",
+									"value": "2"
+								},
+								{
+									"key": "byGradeId",
+									"value": "15",
+									"disabled": true
+								},
+								{
+									"key": "a",
+									"value": "a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "byGradeID OK Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=grade&byGradeId=3",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "grade"
+								},
+								{
+									"key": "bySubjectId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "byGradeId",
+									"value": "3"
+								},
+								{
+									"key": "a",
+									"value": "a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "both param",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=grade&bySubjectId=1&byGradeId=3",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "grade"
+								},
+								{
+									"key": "bySubjectId",
+									"value": "1"
+								},
+								{
+									"key": "byGradeId",
+									"value": "3"
+								},
+								{
+									"key": "a",
+									"value": "a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "incorrect param",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=grade&byGradeId=3a",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "grade"
+								},
+								{
+									"key": "bySubjectId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "byGradeId",
+									"value": "3a"
+								},
+								{
+									"key": "a",
+									"value": "a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "additionnal param",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=grade&a=a",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "grade"
+								},
+								{
+									"key": "bySubjectId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "byGradeId",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "a",
+									"value": "a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "id not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=grade&byGradeId=9999999999999999999",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "grade"
+								},
+								{
+									"key": "bySubjectId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "byGradeId",
+									"value": "9999999999999999999"
+								},
+								{
+									"key": "a",
+									"value": "a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AddGrade",
+			"item": [
+				{
+					"name": "Add Grade OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=4",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "addGrade"
+								},
+								{
+									"key": "idSubject",
+									"value": "2"
+								},
+								{
+									"key": "value",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Grade incorrect param",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=a",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "addGrade"
+								},
+								{
+									"key": "idSubject",
+									"value": "2"
+								},
+								{
+									"key": "value",
+									"value": "a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "deleteGrade",
+			"item": [
+				{
+					"name": "deleteGrade fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=deleteGrade&idGrade=999999999999",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "deleteGrade"
+								},
+								{
+									"key": "idGrade",
+									"value": "999999999999"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetAverage",
+			"item": [
+				{
+					"name": "GetAverage OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=subjectAverage&idSubject=2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "subjectAverage"
+								},
+								{
+									"key": "idSubject",
+									"value": "2"
+								},
+								{
+									"key": "a",
+									"value": "a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAverage id not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=subjectAverage&idSubject=999999999999",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "subjectAverage"
+								},
+								{
+									"key": "idSubject",
+									"value": "999999999999"
+								},
+								{
+									"key": "a",
+									"value": "a",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
