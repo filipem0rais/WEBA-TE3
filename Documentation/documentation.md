@@ -47,7 +47,7 @@ URL d'exemple : `?action=subject&fetchGrades=true`
 Méthode : `GET`  
 Action : `grade`
 
-Pramètres :
+Paramètres :
 
 - `bySubjectId` : int: id de la branche
 
@@ -61,9 +61,10 @@ Réponse : Tableau des `Notes` en JSON, avec les champs :
 
 Codes de retour :
 
-- `204` 
+- `204` si la fonction s'est executée correctement, mais pas de notes dans cette branche
 - `400` si mauvais format de la requête
-- `200` ???
+- `200` si la fonction s'est executée correctement
+- `404` si la branche n'existe pas
 
 URL d'exemple : `?action=grade&bySubjectId=2`
 
@@ -85,9 +86,9 @@ Réponse : `Note` avec tous les champs, ce n'est pas un tableau :
 
 Codes de retour :
 
-- `204` ???
+- `404` si il n'y a pas de note avec l'id spécifié
 - `400` si mauvais format de la requête
-- `200` ???
+- `200` si la requête s'est executée correctement
 
 URL d'exemple : `?action=grade&byGradeId=3`
 
@@ -117,7 +118,7 @@ Action : `addGrade`
 
 Pramètres :
 
-- `idGrade` int: id de la note a supprimé
+- `idGrade` int: id de la note a supprimer
 
 Réponse : aucune réponse
 

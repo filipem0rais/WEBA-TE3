@@ -67,7 +67,7 @@ class Controller
         if (!empty($data)){
             return $this->sendResponse(200, $data);
         } else {
-            return $this->sendResponse(204, $data);
+            return false;
         }
 
     }
@@ -137,7 +137,7 @@ class Controller
         if (!empty($subjects)){
             return $this->sendResponse(200, $subjects);
         } else {
-            return $this->sendResponse(204, $subjects);
+            return false;
         }
     }
 
@@ -154,7 +154,7 @@ class Controller
         if (!empty($data)){
             return $this->sendResponse(200, $data);
         } else {
-            return $this->sendResponse(204, $data);
+            return false;
         }
     }
 
@@ -169,7 +169,7 @@ class Controller
         if (!empty($data)){
             return $this->sendResponse(200, $data);
         } else {
-            return $this->sendResponse(204, $data);
+            return false;
         }
     }
 
@@ -201,7 +201,7 @@ class Controller
         if (!empty($data)){
             return $this->sendResponse(200, $data);
         } else {
-            return $this->sendResponse(204, $data);
+            return false;
         }
     }
 
@@ -217,7 +217,7 @@ class Controller
         if (!empty($data)){
             return $this->sendResponse(200, $data);
         } else {
-            return $this->sendResponse(204, $data);
+            return false;
         }
     }
 
