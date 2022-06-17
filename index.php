@@ -22,7 +22,7 @@ try {
             $viewLoaded = $controller->errorCode(400);
         }
         // Si fetchGrades en paramètre mais pas idSubject
-        if (isset($_GET['fetchGrades']) && !isset($_GET['idSubject'])) {
+        if (isset($_GET['fetchGrades']) && !isset($_GET['idSubject']) && "GET" == $_SERVER['REQUEST_METHOD']) {
             if ($_GET['fetchGrades'] == 'true' && $count == 2) {
                 $viewLoaded = $controller->getGradesBySubjects();
             } else if ($_GET['fetchGrades'] == 'false' && $count == 2) {
@@ -32,7 +32,7 @@ try {
             }
             // Si idSubject est défini
         } else if (isset($_GET['idSubject'])) {
-            if (is_numeric($_GET['idSubject'])) {
+            if (is_numeric($_GET['idSubject']) && "GET" == $_SERVER['REQUEST_METHOD']) {
                 $id = $controller->clear_input($_GET['idSubject']);
                 if (isset($_GET['fetchGrades'])) {
 
@@ -58,17 +58,17 @@ try {
 
         // Requêtes de notes
     } else if ($action == 'grade') {
-        if ($count > 2) {
+        if ($count > 2 ) {
             $viewLoaded = $controller->errorCode(400);
         }
-        if ($count == 1) {
+        if ($count == 1 && "GET" == $_SERVER['REQUEST_METHOD']) {
             $viewLoaded = $controller->getGrades();
         } else if (!isset($_GET['bySubjectId']) && !isset($_GET['byGradeId'])) {
             $viewLoaded = $controller->errorCode(400);
         }
 
         if (isset($_GET['bySubjectId'])) {
-            if (is_numeric($_GET['bySubjectId'])) {
+            if (is_numeric($_GET['bySubjectId']) && "GET" == $_SERVER['REQUEST_METHOD']) {
                 $id = $controller->clear_input($_GET['bySubjectId']);
                 $viewLoaded = $controller->getGradesFromSubject($id);
             } else {
@@ -76,7 +76,7 @@ try {
             }
         }
         if (isset($_GET['byGradeId'])) {
-            if (is_numeric($_GET['byGradeId'])) {
+            if (is_numeric($_GET['byGradeId'])&& "GET" == $_SERVER['REQUEST_METHOD']) {
                 $id = $controller->clear_input($_GET['byGradeId']);
                 $viewLoaded = $controller->getGrade($id);
             } else {
@@ -103,7 +103,7 @@ try {
         }
         // Requête pour la moyenne d'une branche
     } else if ($action == 'subjectAverage') {
-        if (isset($_GET['idSubject']) && is_numeric($_GET['idSubject']) && $count == 2) {
+        if (isset($_GET['idSubject']) && is_numeric($_GET['idSubject']) && "GET" == $_SERVER['REQUEST_METHOD'] && $count == 2) {
             $id = $controller->clear_input($_GET['idSubject']);
             $viewLoaded = $controller->getAverage($id);
         } else {
