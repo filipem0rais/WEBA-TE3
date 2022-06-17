@@ -1,0 +1,638 @@
+{
+	"id": "9fceb89f-4d7f-465a-848e-9a94d08e385e",
+	"name": "WEBA-TE3",
+	"timestamp": "2022-06-17T13:13:33.760Z",
+	"collection_id": "21383626-61633fff-2156-48ef-b5a1-01e3fce4c51e",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 20,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "85528d48-e148-4454-820d-71bb27727843",
+			"name": "Single OK",
+			"url": "http://localhost/WEBA-TE3/?action=subject",
+			"time": 35,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				35
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "091a8fd9-bcb9-41e5-86e8-dabee7d9c354",
+			"name": "FetchGrades OK",
+			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "7eb70b18-7d75-436e-9bfa-cfe8038b84a1",
+			"name": "idSubject OK",
+			"url": "http://localhost/WEBA-TE3/?action=subject&idSubject=1",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "6a422be2-cfc4-4f6e-819e-6664342621ce",
+			"name": "fetchGrades + idSubject OK",
+			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject=1",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "3cbeff79-927e-4e24-97a0-2d53fc603db8",
+			"name": "incorect param",
+			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject222=1",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "0807c90f-fcf6-469e-8421-c79e00f0b3ae",
+			"name": "additionnal param",
+			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject=1&another=1",
+			"time": 17,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "336effb4-4278-431e-81a2-9ba5887a5511",
+			"name": "id not found",
+			"url": "http://localhost/WEBA-TE3/?action=subject&fetchGrades=true&idSubject=9999999999999999999",
+			"time": 32,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "050bbede-fd44-4378-837c-b68e8c74a1c4",
+			"name": "Single OK",
+			"url": "http://localhost/WEBA-TE3/?action=grade",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "bdfdc8a6-cbdc-47a8-9349-1cbb4a804957",
+			"name": "bySubjectID OK",
+			"url": "http://localhost/WEBA-TE3/?action=grade&bySubjectId=2",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "82f773bd-7f36-4936-be33-2febfe7a0b7e",
+			"name": "byGradeID OK Copy",
+			"url": "http://localhost/WEBA-TE3/?action=grade&byGradeId=3",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "3f5d890f-07ae-47f3-8871-31be0e315032",
+			"name": "both param",
+			"url": "http://localhost/WEBA-TE3/?action=grade&bySubjectId=1&byGradeId=3",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "00ebdc75-3a02-4878-9648-f42e24cbb9e4",
+			"name": "incorrect param",
+			"url": "http://localhost/WEBA-TE3/?action=grade&byGradeId=3a",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "6ceb53f7-c5ac-4d35-b491-78c7bab11c95",
+			"name": "additionnal param",
+			"url": "http://localhost/WEBA-TE3/?action=grade&a=a",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "d0a2cb7c-2fc5-4e2b-9d92-b6e490265442",
+			"name": "id not found",
+			"url": "http://localhost/WEBA-TE3/?action=grade&byGradeId=9999999999999999999",
+			"time": 31,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "9695e290-b5bf-4fd5-9d46-1b17d986a8f6",
+			"name": "Add Grade OK",
+			"url": "http://localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=4",
+			"time": 18,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "5720bd4b-6f9f-43b6-8e75-68abab930ed1",
+			"name": "Add Grade incorrect param",
+			"url": "http://localhost/WEBA-TE3/?action=addGrade&idSubject=2&value=a",
+			"time": 19,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "9963be0d-07e5-4b13-80fe-1c51715463fe",
+			"name": "deleteGrade fail",
+			"url": "http://localhost/WEBA-TE3/?action=deleteGrade&idGrade=999999999999",
+			"time": 16,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "03491779-98a9-42be-9193-8824be95cb94",
+			"name": "deleteGrade OK",
+			"url": "http://localhost/WEBA-TE3/?action=deleteGrade&idGrade=1",
+			"time": 18,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "cc5f9077-ad9d-4827-b475-5bf827c6da9a",
+			"name": "GetAverage OK",
+			"url": "http://localhost/WEBA-TE3/?action=subjectAverage&idSubject=2",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f50c4ebe-43ef-4e34-9f5e-55e0520fde42",
+			"name": "GetAverage id not found",
+			"url": "http://localhost/WEBA-TE3/?action=subjectAverage&idSubject=999999999999",
+			"time": 16,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 324,
+	"collection": {
+		"requests": [
+			{
+				"id": "85528d48-e148-4454-820d-71bb27727843",
+				"method": "GET"
+			},
+			{
+				"id": "091a8fd9-bcb9-41e5-86e8-dabee7d9c354",
+				"method": "GET"
+			},
+			{
+				"id": "7eb70b18-7d75-436e-9bfa-cfe8038b84a1",
+				"method": "GET"
+			},
+			{
+				"id": "6a422be2-cfc4-4f6e-819e-6664342621ce",
+				"method": "GET"
+			},
+			{
+				"id": "3cbeff79-927e-4e24-97a0-2d53fc603db8",
+				"method": "GET"
+			},
+			{
+				"id": "0807c90f-fcf6-469e-8421-c79e00f0b3ae",
+				"method": "GET"
+			},
+			{
+				"id": "336effb4-4278-431e-81a2-9ba5887a5511",
+				"method": "GET"
+			},
+			{
+				"id": "050bbede-fd44-4378-837c-b68e8c74a1c4",
+				"method": "GET"
+			},
+			{
+				"id": "bdfdc8a6-cbdc-47a8-9349-1cbb4a804957",
+				"method": "GET"
+			},
+			{
+				"id": "82f773bd-7f36-4936-be33-2febfe7a0b7e",
+				"method": "GET"
+			},
+			{
+				"id": "3f5d890f-07ae-47f3-8871-31be0e315032",
+				"method": "GET"
+			},
+			{
+				"id": "00ebdc75-3a02-4878-9648-f42e24cbb9e4",
+				"method": "GET"
+			},
+			{
+				"id": "6ceb53f7-c5ac-4d35-b491-78c7bab11c95",
+				"method": "GET"
+			},
+			{
+				"id": "d0a2cb7c-2fc5-4e2b-9d92-b6e490265442",
+				"method": "GET"
+			},
+			{
+				"id": "9695e290-b5bf-4fd5-9d46-1b17d986a8f6",
+				"method": "PUT"
+			},
+			{
+				"id": "5720bd4b-6f9f-43b6-8e75-68abab930ed1",
+				"method": "PUT"
+			},
+			{
+				"id": "9963be0d-07e5-4b13-80fe-1c51715463fe",
+				"method": "DELETE"
+			},
+			{
+				"id": "03491779-98a9-42be-9193-8824be95cb94",
+				"method": "DELETE"
+			},
+			{
+				"id": "cc5f9077-ad9d-4827-b475-5bf827c6da9a",
+				"method": "GET"
+			},
+			{
+				"id": "f50c4ebe-43ef-4e34-9f5e-55e0520fde42",
+				"method": "GET"
+			}
+		]
+	}
+}
