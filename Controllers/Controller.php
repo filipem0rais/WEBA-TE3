@@ -69,8 +69,8 @@ class Controller
 
     /**
      * Ajout d'une note
-     * @param $id
      * @param $value
+     * @param $id
      * @return bool
      */
     public function addGrade($id, $value): bool
