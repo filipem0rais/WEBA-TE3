@@ -15,9 +15,9 @@ Réponse : Tableau de `Branche` en JSON, avec les champs :
 
 Codes de retour :
 
-- `204` si aucune branche ???
+- `204` si aucune branche
 - `400` si mauvais format de la requête
-- `200` si au moins une branche ???
+- `200` si au moins une branche
 
 URL d'exemple : `?action=subject&fetchGrades=true`
 
@@ -61,7 +61,7 @@ Réponse : Tableau des `Notes` en JSON, avec les champs :
 
 Codes de retour :
 
-- `204` ???
+- `204` 
 - `400` si mauvais format de la requête
 - `200` ???
 
