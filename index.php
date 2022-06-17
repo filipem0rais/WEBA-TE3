@@ -58,7 +58,7 @@ try {
 
         // Requêtes de notes
     } else if ($action == 'grade') {
-        if ($count > 2 ) {
+        if ($count > 2) {
             $viewLoaded = $controller->errorCode(400);
         }
         if ($count == 1 && "GET" == $_SERVER['REQUEST_METHOD']) {
@@ -76,7 +76,7 @@ try {
             }
         }
         if (isset($_GET['byGradeId'])) {
-            if (is_numeric($_GET['byGradeId'])&& "GET" == $_SERVER['REQUEST_METHOD']) {
+            if (is_numeric($_GET['byGradeId']) && "GET" == $_SERVER['REQUEST_METHOD']) {
                 $id = $controller->clear_input($_GET['byGradeId']);
                 $viewLoaded = $controller->getGrade($id);
             } else {

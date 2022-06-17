@@ -275,7 +275,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status test\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
+									"    pm.response.to.have.status(404);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -631,7 +631,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status test\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
+									"    pm.response.to.have.status(404);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -814,6 +814,47 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "deleteGrade OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost/WEBA-TE3/?action=deleteGrade&idGrade=1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"WEBA-TE3",
+								""
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "deleteGrade"
+								},
+								{
+									"key": "idGrade",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -874,7 +915,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status test\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(404);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -901,11 +942,6 @@
 								{
 									"key": "idSubject",
 									"value": "999999999999"
-								},
-								{
-									"key": "a",
-									"value": "a",
-									"disabled": true
 								}
 							]
 						}
